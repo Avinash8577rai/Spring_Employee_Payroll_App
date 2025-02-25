@@ -1,17 +1,17 @@
 package com.bridgelabz.MysqlAppliaction.dto;
 
+import lombok.*;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Setter
+@Getter
 public class EmployeePayrollDTO {
     private String name;
     private Double salary;
 
-    public EmployeePayrollDTO() {
-    }
-
-    public EmployeePayrollDTO(String name, Double salary) {
-        this.name = name;
-        this.salary = salary;
-    }
-
+/*
     public String getName() {
         return name;
     }
@@ -27,4 +27,6 @@ public class EmployeePayrollDTO {
     public void setSalary(Double salary) {
         this.salary = salary;
     }
+
+ */
 }

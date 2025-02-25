@@ -1,13 +1,13 @@
 package com.bridgelabz.MysqlAppliaction.model;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
-
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "employees")
 public class Employee {
 
@@ -19,7 +19,13 @@ public class Employee {
     private String department;
     private double salary;
 
+    public Employee(String name, Double salary) {
+        this.name = name;
+        this.salary=salary;
+    }
+
     // Constructors
+    /*
     public Employee() {}
 
     public Employee(String name, String department, double salary) {
@@ -44,4 +50,6 @@ public class Employee {
 
     public double getSalary() { return salary; }
     public void setSalary(double salary) { this.salary = salary; }
+    */
+
 }
