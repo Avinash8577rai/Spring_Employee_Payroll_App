@@ -32,3 +32,9 @@
 2025-02-25 15:32:04 - [restartedMain] - o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
 2025-02-25 15:32:04 - [restartedMain] - o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
 2025-02-25 15:32:04 - [restartedMain] - c.b.M.MysqlApplication - Started MysqlApplication in 4.52 seconds (process running for 5.172)
+2025-02-25 15:38:18 - [SpringApplicationShutdownHook] - o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-02-25 15:38:18 - [tomcat-shutdown] - o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-02-25 15:38:18 - [SpringApplicationShutdownHook] - o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-25 15:38:18 - [SpringApplicationShutdownHook] - o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-02-25 15:38:18 - [SpringApplicationShutdownHook] - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-02-25 15:38:18 - [SpringApplicationShutdownHook] - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
