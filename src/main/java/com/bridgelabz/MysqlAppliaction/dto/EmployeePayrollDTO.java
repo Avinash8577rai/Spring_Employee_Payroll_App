@@ -1,5 +1,7 @@
 package com.bridgelabz.MysqlAppliaction.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 @AllArgsConstructor
@@ -8,6 +10,9 @@ import lombok.*;
 @Setter
 @Getter
 public class EmployeePayrollDTO {
+
+    @NotBlank(message = "Name is required")
+    @Pattern(regexp = "^[A-Z][a-zA-Z ]{2,}$", message = "Name must start with a capital letter and be at least 3 characters long")
     private String name;
     private Double salary;
 
