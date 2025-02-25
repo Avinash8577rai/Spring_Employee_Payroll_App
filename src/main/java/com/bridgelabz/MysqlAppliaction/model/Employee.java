@@ -19,11 +19,16 @@ public class Employee {
     private String department;
     private double salary;
 
-
+    // Constructors
+    public Employee() {}
 
     public Employee(String name, String department, double salary) {
         this.name = name;
         this.department = department;
+        this.salary = salary;
+    }
+    public Employee(String name, double salary){
+        this.name = name ;
         this.salary = salary;
     }
 
