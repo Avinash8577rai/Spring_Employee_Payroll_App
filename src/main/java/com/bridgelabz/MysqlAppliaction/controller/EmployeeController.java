@@ -4,13 +4,14 @@ import com.bridgelabz.MysqlAppliaction.dto.EmployeePayrollDTO;
 import com.bridgelabz.MysqlAppliaction.model.Employee;
 import com.bridgelabz.MysqlAppliaction.repository.EmployeeRepository;
 import com.bridgelabz.MysqlAppliaction.service.EmployeeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
+@Slf4j
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
@@ -112,5 +113,22 @@ public class EmployeeController {
     @DeleteMapping("/list/delete/{id}")
     public String deleteEmployeeList(@PathVariable int id) {
         return service.deleteEmployeeList(id) ? "Deleted Successfully" : "Employee Not Found";
+    }
+    @GetMapping("/log/all")
+    public String getAllEmployeeslog() {
+        log.info("Fetching all employees...");
+        return "List of employees";
+    }
+
+    @GetMapping("/log//by-id/{id}")
+    public String getEmployeeByIdlog(@PathVariable Long id) {
+        log.debug("Fetching employee with ID: {}", id);
+        return "Employee details";
+    }
+
+    @PostMapping("/log/add")
+    public String addEmployeelog(@RequestBody String employee) {
+        log.warn("Adding new employee: {}", employee);
+        return "Employee added";
     }
 }
