@@ -54,12 +54,27 @@ public class EmployeeController {
         service.deleteEmployee(id);
     }
 
-    @PostMapping("/dto/add")
+   /* @PostMapping("/dto/add")
     public EmployeePayrollDTO createEmployee(@Valid @RequestBody EmployeePayrollDTO employeeDTO) {
         Employee employee = new Employee(employeeDTO.getName(), employeeDTO.getSalary());
         employeeRepository.save(employee);
         return employeeDTO;
     }
+
+    */
+   @PostMapping("/dto/add")
+   public Employee createEmployee(@Valid @RequestBody EmployeePayrollDTO employeeDTO) {
+       Employee employee = new Employee();
+       employee.setName(employeeDTO.getName());
+       employee.setSalary(employeeDTO.getSalary());
+       employee.setGender(employeeDTO.getGender());
+       employee.setStartDate(employeeDTO.getStartDate());
+       employee.setNote(employeeDTO.getNote());
+       employee.setProfilePic(employeeDTO.getProfilePic());
+       employee.setDepartment(employeeDTO.getDepartment());
+
+       return employeeRepository.save(employee);
+   }
 
 
     @GetMapping("/dto/all")
@@ -88,11 +103,17 @@ public class EmployeeController {
                 .map(employee -> {
                     employee.setName(updatedDTO.getName());
                     employee.setSalary(updatedDTO.getSalary());
+                    employee.setGender(updatedDTO.getGender());
+                    employee.setStartDate(updatedDTO.getStartDate());
+                    employee.setNote(updatedDTO.getNote());
+                    employee.setProfilePic(updatedDTO.getProfilePic());
+                    employee.setDepartment(updatedDTO.getDepartment());
                     employeeRepository.save(employee);
                     return updatedDTO;
                 })
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
     }
+
     @GetMapping("/list/all")
     public List<Employee> getAllEmployeesList() {
         return service.getAllEmployeesList();
