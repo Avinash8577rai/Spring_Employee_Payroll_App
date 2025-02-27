@@ -61,20 +61,24 @@ public class EmployeeController {
         return employeeDTO;
     }
 
+
     @GetMapping("/dto/all")
     public List<EmployeePayrollDTO> getAllEmployeesDTO() {
         return employeeRepository.findAll()
                 .stream()
-                .map(emp -> new EmployeePayrollDTO(emp.getName(), emp.getSalary()))
+                .map(emp -> new EmployeePayrollDTO(emp.getName(), emp.getSalary(), emp.getGender(), emp.getStartDate(),
+                        emp.getNote(), emp.getProfilePic(), emp.getDepartment()))
                 .collect(Collectors.toList());
     }
 
     /*** ---- GET EMPLOYEE BY ID AS DTO ---- ***/
     @GetMapping("/dto/by-id/{id}")
     public EmployeePayrollDTO getEmployeeByIdDTO(@PathVariable Long id) {
-        Optional<Employee> employee = employeeRepository.findById(id);
-        return employee.map(emp -> new EmployeePayrollDTO(emp.getName(), emp.getSalary()))
+        Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
+
+        return new EmployeePayrollDTO(employee.getName(), employee.getSalary(), employee.getGender(),
+                employee.getStartDate(), employee.getNote(), employee.getProfilePic(), employee.getDepartment());
     }
 
     /*** ---- UPDATE EMPLOYEE USING DTO ---- ***/

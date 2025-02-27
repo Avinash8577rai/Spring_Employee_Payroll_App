@@ -2,6 +2,9 @@ package com.bridgelabz.MysqlAppliaction.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Data
 @Getter
@@ -16,12 +19,19 @@ public class Employee {
     private Long id;
 
     private String name;
-    private String department;
     private double salary;
+    private String gender;
+    private LocalDate startDate;
+    private String note;
+    private String profilePic;
+    @ElementCollection
+    private List<String> department;
+
 
     public Employee(String name, Double salary) {
         this.name = name;
         this.salary=salary;
+
     }
 
     // Constructors
