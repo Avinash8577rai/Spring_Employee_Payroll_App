@@ -2,12 +2,9 @@ package com.bridgelabz.MysqlAppliaction.service;
 
 import com.bridgelabz.MysqlAppliaction.model.Employee;
 import com.bridgelabz.MysqlAppliaction.repository.EmployeeRepository;
-
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import java.util.List;
 
 @Service
@@ -31,11 +28,18 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Long id, Employee updatedEmployee) {
-        if (repository.existsById(id)) {
-            updatedEmployee.setId(id);
-            return repository.save(updatedEmployee);
-        }
-        return null;
+        return repository.findById(id)
+                .map(employee -> {
+                    employee.setName(updatedEmployee.getName());
+                    employee.setSalary(updatedEmployee.getSalary());
+                    employee.setGender(updatedEmployee.getGender());
+                    employee.setStartDate(updatedEmployee.getStartDate());
+                    employee.setNote(updatedEmployee.getNote());
+                    employee.setProfilePic(updatedEmployee.getProfilePic());
+                    employee.setDepartment(updatedEmployee.getDepartment());
+                    return repository.save(employee);
+                })
+                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
     }
 
     public void deleteEmployee(Long id) {
@@ -75,8 +79,8 @@ public class EmployeeService {
     public boolean deleteEmployeeList(int id) {
         return employees.removeIf(emp -> emp.getId() == id);
     }
+}
 // added a service layer in my code
 
 
 
-}
