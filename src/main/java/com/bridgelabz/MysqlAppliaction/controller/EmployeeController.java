@@ -156,5 +156,9 @@ public class EmployeeController {
         log.warn("Adding new employee: {}", employee);
         return "Employee added";
     }
+    @GetMapping("/sales-department")
+    public List<Employee> getEmployeesBySalesDepartment() {
+        return service.getEmployeesBySalesDepartment();
+    }
 
 }

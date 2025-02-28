@@ -79,6 +79,9 @@ public class EmployeeService {
     public boolean deleteEmployeeList(int id) {
         return employees.removeIf(emp -> emp.getId() == id);
     }
+    public List<Employee> getEmployeesBySalesDepartment() {
+        return repository.findEmployeesBySalesDepartment();
+    }
 }
 // added a service layer in my code
 
